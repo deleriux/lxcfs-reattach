@@ -1,0 +1,11 @@
+[Unit]
+Description=Detect and Remount FUSE filesystems for LXC
+ConditionVirtualization=!container
+After=lxcfs.service
+
+[Service]
+ExecStart=/usr/local/bin/lxcfs-reattach -mv
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
